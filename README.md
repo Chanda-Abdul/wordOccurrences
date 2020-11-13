@@ -50,15 +50,16 @@ their dreams.”
   - `.sort()` to sort the words by ascending order alphabetically
 - Then, use the `forEach()` method on the `uniqueWords` array to add each individual word to the `results` object while keeping a tally of each word
   
-  ```
-  uniqueWords.forEach(word => {
-  if(results[word]) {
-    results[word] = results[word] + 1
-  } else {
-    results[word] = 1
-  }
+```
+uniqueWords.forEach(word => {
+    if(results[word]) {
+        results[word] = results[word] + 1
+    } else {
+        results[word] = 1
+    }
 })
 ```
+
 - if you return the `results` object at this point, it will return an object of the words and thier frequencies sorted alphabetically, but we would like the object to be sorted by frequency FIRST and then we will sort that alphabetically
   
 
