@@ -3,7 +3,7 @@ Given a string of text,
 - [x] write a program that prints a list of unique words contained in the string 
 - [x] along with the number of occurrences of each word in the string. 
 - [ ] The list should be sorted in descending order by frequency, 
-- [ ] and ascending order alphabetically when multiple words occur with the same frequency. 
+- [x] and ascending order alphabetically when multiple words occur with the same frequency. 
 
 For example, given the input
 
@@ -37,8 +37,14 @@ their dreams.”
 ## Process
 
 - The solution for this problem will be in JavaScript
-- start by creating a function called `wordOccurrences` that accepts one parameter `paragraph`
-- inside of the function create a variable called `results` and set it to an empty object, this varible will contain the word and frequency pairings
+- Start by creating a function called `wordOccurrences` that accepts one parameter `paragraph`
+- Inside of the function create a variable called `results` and set it to an empty object, this variable will contain the word and frequency pairings
+- Next, create a variable called `uniqueWords` to hold an array of the individual words from the `paragraph` parameter string
+  - set this to our `paragraph` parameter
+  - chain with `.toLowerCase()` so that duplicate words with different casings will be grouped together
+  - `.replace(/[^\w\s]/g, "")` so that all punctution will be removed and replaced
+  - `.split(" ")` to seperate each individual word into our array based on the space between words
+  - `.sort()` to sort the words by ascending order alphabetically 
 
 ## Input
 
