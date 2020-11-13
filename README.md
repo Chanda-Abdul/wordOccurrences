@@ -39,6 +39,7 @@ their dreams.”
 - The solution for this problem will be in JavaScript
 - Start by creating a function(program) called `wordOccurrences` that accepts one parameter `paragraph`
 - Inside of the function create a variable called `results` and set it to an empty object, this variable will contain the word and frequency pairings
+    
     `let results = {}`
 - Next, create a variable called `uniqueWords` to hold an array of the individual words from the `paragraph` parameter string
     
@@ -59,9 +60,19 @@ uniqueWords.forEach(word => {
     }
 })
 ```
-
 - if you return the `results` object at this point, it will return an object of the words and thier frequencies sorted alphabetically, but we would like the object to be sorted by frequency FIRST and then we will sort that alphabetically
-  
+- Next we will set `results = Object.entries(results)`.  This changes our current results object to a nested array which we can then sort according to word frequency
+    - then we will chain our `sort()` method to sort everything in the array, descending, according to frequency with `.sort((a, b) => b[1] - a[1])`
+    - Now we have an array that contains nested arrays with all of our word/frequency pairings.  This looks messy, and I would like to convert this back into an object so I will use the `reduce()` method with an accumulator, and key & value pairs.  I will set an empty object as the starting point for this reduce function
+ ```
+ .reduce((accum, [k, v]) => {
+    accum[k] = v;
+    return accum
+    }, {})
+```
+- Finally, we will return our results object and this should provide us with the correctly formatted output(see below) we are looking for.
+
+`return results`
 
 ## Solution
 
@@ -78,7 +89,14 @@ uniqueWords.forEach(word => {
   }
 })
 
+results = Object.entries(results).sort((a, b) => b[1] - a[1]).reduce((accum, [k, v]) => {
+    accum[k] = v;
+    return accum
+}, {})
+
+
 return results
+
 }
 ```
 
