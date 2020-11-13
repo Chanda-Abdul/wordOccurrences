@@ -1,8 +1,8 @@
 # wordOccurrences
-Given a string of text, 
+Given a string of text 
 - [x] write a program that prints a list of unique words contained in the string 
 - [x] along with the number of occurrences of each word in the string. 
-- [ ] The list should be sorted in descending order by frequency, 
+- [x] The list should be sorted in descending order by frequency, 
 - [x] and ascending order alphabetically when multiple words occur with the same frequency. 
 
 For example, given the input
@@ -37,29 +37,30 @@ their dreams.”
 ## Process
 
 - The solution for this problem will be in JavaScript
-- Start by creating a function called `wordOccurrences` that accepts one parameter `paragraph`
+- Start by creating a function(program) called `wordOccurrences` that accepts one parameter `paragraph`
 - Inside of the function create a variable called `results` and set it to an empty object, this variable will contain the word and frequency pairings
+    `let results = {}`
 - Next, create a variable called `uniqueWords` to hold an array of the individual words from the `paragraph` parameter string
+    
+    `let uniqueWords = paragraph.toLowerCase().replace(/[^\w\s]/g, "").split(" ").sort()`
   - set this to our `paragraph` parameter
-  - chain with `.toLowerCase()` so that duplicate words with different casings will be grouped together
-  - `.replace(/[^\w\s]/g, "")` so that all punctution will be removed and replaced
+  - chain with `.toLowerCase()` so that duplicate words with different casings will be grouped together and all words will be completly lower cased
+  - `.replace(/[^\w\s]/g, "")` so that all punctution will be removed and replaced 
   - `.split(" ")` to seperate each individual word into our array based on the space between words
-  - `.sort()` to sort the words by ascending order alphabetically 
-
-## Input
-
+  - `.sort()` to sort the words by ascending order alphabetically
+- Then, use the `forEach()` method on the `uniqueWords` array to add each individual word to the `results` object while keeping a tally of each word
+  
+  ```
+  uniqueWords.forEach(word => {
+  if(results[word]) {
+    results[word] = results[word] + 1
+  } else {
+    results[word] = 1
+  }
+})
 ```
-let fullParagraph = "From the moment the first immigrants arrived on these shores, generations of parents 
-have worked hard and sacrificed whatever is necessary so that their children could have the same chances they
-had; or the chances they never had. Because while we could never ensure that our children would be rich or 
-successful; while we could never be positive that they would do better than their parents, America is about 
-making it possible to give them the chance. To give every child the opportunity to try. Education is still the
-foundation of this opportunity. And the most basic building block that holds that foundation together is still 
-reading. At the dawn of the 21st century, in a world where knowledge truly is power and literacy is the skill 
-that unlocks the gates of opportunity and success, we all have a responsibility as parents and librarians, 
-educators and citizens, to instill in our children a love of reading so that we can give them the chance to 
-fulfill their dreams."
-```
+- if you return the `results` object at this point, it will return an object of the words and thier frequencies sorted alphabetically, but we would like the object to be sorted by frequency FIRST and then we will sort that alphabetically
+  
 
 ## Solution
 
@@ -79,6 +80,23 @@ uniqueWords.forEach(word => {
 return results
 }
 ```
+
+
+## Input
+
+```
+let fullParagraph = "From the moment the first immigrants arrived on these shores, generations of parents 
+have worked hard and sacrificed whatever is necessary so that their children could have the same chances they
+had; or the chances they never had. Because while we could never ensure that our children would be rich or 
+successful; while we could never be positive that they would do better than their parents, America is about 
+making it possible to give them the chance. To give every child the opportunity to try. Education is still the
+foundation of this opportunity. And the most basic building block that holds that foundation together is still 
+reading. At the dawn of the 21st century, in a world where knowledge truly is power and literacy is the skill 
+that unlocks the gates of opportunity and success, we all have a responsibility as parents and librarians, 
+educators and citizens, to instill in our children a love of reading so that we can give them the chance to 
+fulfill their dreams."
+```
+
 
 ## Output
 
