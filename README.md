@@ -45,9 +45,9 @@ their dreams.”
     
     `let uniqueWords = paragraph.toLowerCase().replace(/[^\w\s]/g, "").split(" ").sort()`
   - set this to our `paragraph` parameter
-  - chain with `.toLowerCase()` so that duplicate words with different casings will be grouped together and all words will be completly lower cased
-  - `.replace(/[^\w\s]/g, "")` so that all punctution will be removed and replaced 
-  - `.split(" ")` to seperate each individual word into our array based on the space between words
+  - chain with `.toLowerCase()` so that duplicate words with different casings will be grouped together and all words will be completely lower cased
+  - `.replace(/[^\w\s]/g, "")` so that all punctuation will be removed and replaced 
+  - `.split(" ")` to separate each individual word into our array based on the space between words
   - `.sort()` to sort the words by ascending order alphabetically
 - Then, use the `forEach()` method on the `uniqueWords` array to add each individual word to the `results` object while keeping a tally of each word
   
@@ -60,7 +60,7 @@ uniqueWords.forEach(word => {
     }
 })
 ```
-- if you return the `results` object at this point, it will return an object of the words and thier frequencies sorted alphabetically, but we would like the object to be sorted by frequency FIRST and then we will sort that alphabetically
+- if you return the `results` object at this point, it will return an object of the words and their frequencies sorted alphabetically, but we would like the object to be sorted by frequency FIRST and then we will sort that alphabetically
 - Next we will set `results = Object.entries(results)`.  This changes our current results object to a nested array which we can then sort according to word frequency
     - then we will chain our `sort()` method to sort everything in the array, descending, according to frequency with `.sort((a, b) => b[1] - a[1])`
     - Now we have an array that contains nested arrays with all of our word/frequency pairings.  This looks messy, and I would like to convert this back into an object so I will use the `reduce()` method with an accumulator, and key & value pairs.  I will set an empty object as the starting point for this reduce function
